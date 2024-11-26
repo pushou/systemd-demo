@@ -1,0 +1,16 @@
+# /etc/systemd/system/monapp@.service
+[Unit]
+Description=appliquette python
+After=network.target
+
+[Service]
+Type=simple
+User=student
+Environment="FLASK_RUN_PORT=500%i"
+Environment="VERSION_MONAPP=%i.0"
+WorkingDirectory=/home/student/systemd-demo
+ExecStart=/home/student/systemd-demo/lance_monapp.sh
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
